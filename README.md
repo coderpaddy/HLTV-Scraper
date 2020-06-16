@@ -10,10 +10,11 @@
 # Usage
  - Can collect current rankings, events and results from matches
 
-   - Collect All
+   * Collect All
+    ```
     python htlv_scrape
-
-   - Collect Sepcific
+    ```
+   * Collect Sepcific
     ```
     python _events.py
     python _rank.py
