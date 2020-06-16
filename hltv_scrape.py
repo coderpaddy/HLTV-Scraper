@@ -1,10 +1,7 @@
 from datetime import date
+
 import requests
 from bs4 import BeautifulSoup as BS
-
-from _events import get_todays_events
-from _rank import get_todays_ranks
-from _resutls import get_todays_results
 
 MAIN_URL = "https://www.hltv.org"
 TODAY = date.today()
@@ -22,8 +19,10 @@ def check_done(bool_to_check):
 
 
 if __name__ == "__main__":
+    from _events import get_todays_events
+    from _rank import get_todays_ranks
+    from _results import get_todays_results
     results = get_todays_results()
     events = get_todays_events()
     rank = get_todays_ranks()
     print(f" Results: {check_done(results)} \t Events: {check_done(events)} \t Rank: {check_done(rank)}")
-

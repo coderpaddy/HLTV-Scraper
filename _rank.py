@@ -1,7 +1,8 @@
-import ScraperTools.tools as ST
-import hltv_main as HM
-
 import csv
+
+import hltv_scrape as HM
+import ScraperTools.tools as ST
+
 
 def get_todays_ranks():
     try:
@@ -15,11 +16,8 @@ def get_todays_ranks():
         for team in todays_teams:
             header =  ST.get_elem(team, "div", "class", "ranking-header")
             players = ST.get_elems(team, "div", "class", "rankingNicknames")
-            print(header.find_all())
             count += 1
             links = ST.get_elems(team, "a", "class", "moreLink")
-            profile_link = links[0].attrs['href']
-            rank_stats_link = links[1].attrs['href']
             todays_rank_dict[count] = {
                 "position": ST.get_elem(header, "span", "class", "position").get_text().replace("#", ""),
                 "name": ST.get_elem(header, "span", "class", "name").get_text(),
@@ -35,3 +33,7 @@ def get_todays_ranks():
     except Exception as ex:
         print(ex)
         return False
+
+if __name__ == "__main__":
+    rank = get_todays_ranks()
+    print(f" Rank: {HM.check_done(rank)}")

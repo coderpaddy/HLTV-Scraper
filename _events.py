@@ -1,7 +1,8 @@
-import ScraperTools.tools as ST
-import hltv_main as HM
-
 import csv
+
+import hltv_scrape as HM
+import ScraperTools.tools as ST
+
 
 def get_todays_events():
     try:
@@ -12,7 +13,6 @@ def get_todays_events():
         todays_events = ST.get_elems(today_tab, "a", "class", "ongoing-event")
         todays_events_dict = {}
         count = 0
-        sorted_day = HM.TODAY.strftime("%d/%m/%Y")
         for event in todays_events:
             count += 1
             dates = ST.get_elems(event, "span", "data-time-format", "MMM do")
@@ -35,3 +35,7 @@ def get_todays_events():
     except Exception as ex:
         print(ex)
         return False
+
+if __name__ == "__main__":
+    events = get_todays_events()
+    print(f"Events: {HM.check_done(events)}")
