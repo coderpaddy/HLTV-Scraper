@@ -29,4 +29,4 @@
     python _results.py
 ```
 
-# Feel free to cubmit feature requests.
+# Feel free to Submit feature requests.
